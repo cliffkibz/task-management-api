@@ -6,13 +6,13 @@ from django.contrib.auth.models import User
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = '__all__'
-
+        fields = ['id', 'project', 'title', 'description', 'status', 'due_date', 'priority']
+        read_only_fields = ['id', 'project']
 
 class ProjectSerializer(serializers.ModelSerializer):
     tasks = TaskSerializer(many=True, read_only=True)
-    user = serializers.ReadOnlyField(source='user.id')
 
     class Meta:
         model = Project
         fields = ['id', 'user', 'title', 'description', 'created_at', 'tasks']
+        read_only_fields = ['id']
