@@ -18,6 +18,7 @@ class Task(models.Model):
     status = models.CharField(max_length=20, default='pending')
     due_date = models.DateField(null=True, blank=True)
     priority = models.CharField(max_length=20, default='medium')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
