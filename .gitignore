@@ -5,7 +5,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.qodo/
 # Virtual environments
 venv/
 env/
