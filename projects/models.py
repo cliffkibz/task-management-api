@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="projects")
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -27,8 +27,7 @@ class Task(models.Model):
         ("high", "High"),
     ]
 
-    title = models.CharField(max_length=200)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="todo")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
     due_date = models.DateField(null=True, blank=True)
     priority = models.CharField(
         max_length=20, choices=PRIORITY_CHOICES, default="medium"
