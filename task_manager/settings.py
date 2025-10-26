@@ -15,6 +15,9 @@ from datetime import timedelta
 import os
 from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,27 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# Load environment variables from a .env file (optional). Use environment variables
-# in production to avoid committing secrets in source control.
-load_dotenv(BASE_DIR / ".env")
-
 # SECURITY WARNING: keep the secret key used in production secret!
-# Use the DJANGO_SECRET_KEY environment variable in production.
-SECRET_KEY = os.getenv(
-    "DJANGO_SECRET_KEY",
-    "django-insecure-u@9-jt48g5#2@tt8)%ogcvb-yc#ni*kk11oau$a0^72im72yxc",
-)
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
 # Allow configuring hosts via DJANGO_ALLOWED_HOSTS (comma-separated)
-allowed_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "")
-ALLOWED_HOSTS = (
-    [h for h in [host.strip() for host in allowed_hosts.split(",")] if h]
-    if allowed_hosts
-    else []
-)
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
 
 
 # Application definition
