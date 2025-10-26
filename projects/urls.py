@@ -4,6 +4,7 @@ from .views import (
     ProjectViewSet,
     TaskViewSet,
     ProjectTaskListCreateView,
+    ProjectTaskDetailView,
 )
 
 router = DefaultRouter()
@@ -16,5 +17,10 @@ urlpatterns = [
         "projects/<int:project_id>/tasks/",
         ProjectTaskListCreateView.as_view(),
         name="project-tasks",
+    ),
+    path(
+        "projects/<int:project_id>/tasks/<int:pk>/",
+        ProjectTaskDetailView.as_view(),
+        name="project-task-detail",
     ),
 ]

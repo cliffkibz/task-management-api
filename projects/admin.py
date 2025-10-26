@@ -14,3 +14,4 @@ class TaskAdmin(admin.ModelAdmin):
     list_filter = ('status', 'priority', 'due_date', 'created_at', 'project')
     search_fields = ('title', 'description', 'project__title')
     date_hierarchy = 'created_at'
+ 
